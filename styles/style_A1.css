@@ -1,0 +1,44 @@
+#div_A01 {
+  background-size: 1000px 1000px;
+  background-image: linear-gradient(to right, #aaf, #d5f, #aaf);
+  animation: animate 1000s ease-in-out infinite;
+}
+
+#h1_A01 {
+  padding-top: 130px;
+  padding-bottom: 130px;
+  padding-left: 100px;
+  font-size: 120px;
+  text-align: left;
+  color: #ffffff;
+}
+
+#h3_A01 {
+    font-size: 60px;
+    text-align: center;
+    color: #000000;
+}
+
+
+@keyframes animate {
+  0% {
+    background-position: 0% 50%;
+    transform: scale(1);
+  }
+  25% {
+    background-position: 25% 50%;
+    transform: scale(1);
+  }
+  50% {
+    background-position: 50% 50%;
+    transform: scale(1);
+  }
+  75% {
+    background-position: 75% 50%;
+    transform: scale(1);
+  }
+  100% {
+    background-position: 100% 50%;
+    transform: scale(1);
+  }
+}
