@@ -3,365 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top 10 Ranks</title>
+    <title>Money double through interest calculator</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f7fa;
-            color: #444;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
+            font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        header {
-            background: linear-gradient(90deg, #ff0000, #0000ff);
-            color: white;
-            text-align: center;
-            padding: 20px 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-            border-bottom-left-radius: 50% 20px;
-            border-bottom-right-radius: 50% 20px;
-        }
-        header img {
-            width: 80px;
-            margin-bottom: 10px;
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-        header img:hover {
-            transform: scale(1.1);
-        }
-        header h1 {
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
             margin: 0;
-            font-size: 2em;
-            font-weight: 300;
-            animation: slideIn 1s ease-out forwards;
-        }
-        header::before, header::after {
-            content: "";
-            position: absolute;
-            top: -50%;
-            width: 140%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(45deg);
-            animation: headerWave 6s infinite linear;
-        }
-        header::after {
-            animation-delay: -3s;
-        }
-        @keyframes headerWave {
-            from { left: -100%; }
-            to { left: 100%; }
-        }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 40px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1.5s ease-in forwards;
-            position: relative;
-            overflow: hidden;
-            flex-grow: 1;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 1em;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        th {
-            background: linear-gradient(90deg, #ff0000, #0000ff);
-            color: white;
-            text-transform: uppercase;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        tr:hover {
-            background-color: #e0e0e0;
-        }
-        td a {
-            color: #6a11cb;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        td a:hover {
-            color: #2575fc;
-            text-decoration: underline;
-        }
-        .bg-pattern::before {
-            content: "";
-            position: absolute;
-            top: -75px;
-            left: -75px;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 80%);
-            z-index: -1;
-            animation: bgMove 10s linear infinite;
-        }
-        @keyframes bgMove {
-            from { transform: translateX(0) translateY(0); }
-            to { transform: translateX(300px) translateY(300px); }
-        }
-        .container::before, .container::after {
-            content: "";
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
-            border-radius: 50%;
-            z-index: -1;
-            animation: bubble 20s linear infinite;
-            opacity: 0.5;
-        }
-        .container::before {
-            top: -50px;
-            left: -50px;
-            animation-duration: 15s;
-        }
-        .container::after {
-            bottom: -50px;
-            right: -50px;
-            animation-duration: 25s;
-        }
-        @keyframes bubble {
-            from { transform: scale(1) translateY(0); }
-            to { transform: scale(1.5) translateY(-50px); }
-        }
-        footer {
-            background: #6a11cb;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-        footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-        footer a:hover {
-            color: #2575fc;
-        }
-        footer img {
-            width: 30px;
-            margin-top: 10px;
-            transition: transform 0.3s ease;
-        }
-        footer img:hover {
-            transform: scale(1.1);
-        }
-        .countdown {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 1.5em;
-            background-color: #f9f9f9;
+            background: #fff;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: inline-block;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
-        .countdown h2 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            color: #333;
-        }
-        .countdown span {
-            display: inline-block;
-            font-size: 2em;
-            font-weight: bold;
-            padding: 10px 20px;
-            margin: 5px;
-            background-color: #6a11cb;
-            color: white;
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: calc(100% - 22px);
+            border: 1px solid #ccc;
             border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
         }
-        .countdown span:hover {
-            transform: scale(1.1);
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
         }
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8em;
-            }
-            .container {
-                padding: 15px;
-            }
-            th, td {
-                padding: 8px;
-                font-size: 0.9em;
-            }
-            footer img {
-                width: 25px;
-            }
+        button:hover {
+            background-color: #0056b3;
         }
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.5em;
-            }
-            header img {
-                width: 60px;
-            }
-            .container {
-                padding: 10px;
-            }
-            th, td {
-                padding: 6px;
-                font-size: 0.8em;
-            }
-            footer img {
-                width: 20px;
-            }
+        .result1 {
+            margin-top: 25px;
+            font-size: 1.2em;
+            color: #000000;
+        }
+        .result2 {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            color: #000000;
         }
     </style>
 </head>
 <body>
-
-<header>
-    <img src="logo.png" alt="Logo">
-    <h1>Top participants with the coolest video game ideas</h1>
-</header>
-
-<div class="container bg-pattern">
-    <table>
-        <tr>
-            <th>Rank</th>
-            <th>Name</th>
-            <th>Facebook ID</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>--</td>
-            <td><a href="--" target="_blank">--</a></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>--</td>
-            <td><a href="--" target="_blank">--</a></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>--</td>
-            <td><a href="--" target="_blank">--</a></td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>--</td>
-            <td><a href="--" target="_blank">--</a></td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>--</td>
-            <td><a href="--" target="_blank">--</a></td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>--
-            <td><a href="--" target="_blank">--</a></td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>--</td>
-            <td><a href="--" target="_blank">--</a></td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>--</td>
-            <td><a href="--" target="_blank">--</a></td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>--</td>
-            <td><a href="--" target="_blank">--</a></td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>--</td>
-            <td><a href="--" target="_blank">--</a></td>
-        </tr>
-    </table>
-    
-    <div class="countdown">
-        <h2>Time left</h2>
-        <div id="countdown">
-            <span id="days"></span>
-            <span id="hours"></span>
-            <span id="minutes"></span>
-            <span id="seconds"></span>
-        </div>
+    <div class="container">
+        <h1>Money double in (Year)</h1>
+        <input type="number" id="principal" placeholder="Principal" step="0.01">
+        <input type="number" id="interest" placeholder="Interest" step="0.01">
+        <button onclick="calculate()">Calculate</button>
+        <div id="result1" class="result1"></div>
+        <div id="result2" class="result2"></div>
     </div>
 
-</div>
+    <script>
+        function calculate() {
+            // Get the values from the input fields
+            var principal = parseFloat(document.getElementById('principal').value) || 0;
+            var interest = parseFloat(document.getElementById('interest').value) || 0;
 
-<footer>
-    <a href="https://www.facebook.com/tsarx0/" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
-    </a>
-</footer>
+            
+            var principal2 = principal;
+            var money = principal;
+            // Calculate the sum
+            var doublePrincipal = (principal * 2);
+            var sum = 0
+            while (true) {
+                principal += (principal * (interest/100));
+                sum += 1;
+                
+                if (doublePrincipal <= principal) {
+                    break;
+                }
+            }
+            
+            // Calculate the sum
+            var sum2 = 0;
+            while (true) {
+                principal2 += (money * (interest/100));
+                sum2 += 1;
+                
+                if (doublePrincipal <= principal2) {
+                    break;
+                }
+            }
 
-<script>
-    // Set the date we're counting down to
-    var countDownDate = new Date("July 8, 2024 00:00:00").getTime();
 
-    // Update the countdown every 1 second
-    var countdownFunction = setInterval(function() {
-        // Get today's date and time
-        var now = new Date().getTime();
-
-        // Calculate the distance between now and the countdown date
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Display the result in the element with id="countdown"
-        document.getElementById("days").innerHTML = days + "d ";
-        document.getElementById("hours").innerHTML = hours + "h ";
-        document.getElementById("minutes").innerHTML = minutes + "m ";
-        document.getElementById("seconds").innerHTML = seconds + "s ";
-
-        // If the countdown is over, write some text
-        if (distance < 0) {
-            clearInterval(countdownFunction);
-            document.getElementById("countdown").innerHTML = "EXPIRED";
+            // Display the result
+            document.getElementById('result1').textContent = '(for) Compound interest: ' + sum.toFixed(2) + 'year';
+            document.getElementById('result2').textContent = '(for) Simple interest: ' + sum2.toFixed(2) + 'year';
+            
         }
-    }, 1000);
-</script>
-
+    </script>
 </body>
 </html>
-
