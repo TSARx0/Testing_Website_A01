@@ -5,24 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Money Double Through Interest Calculator</title>
     <style>
+    
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Stack containers vertically */
+            justify-content: flex-start;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             background-color: #f4f4f4;
             margin: 0;
             padding: 10px;
             box-sizing: border-box;
             overflow: auto; /* Ensure the body allows scrolling */
         }
+    
         .container1 {
             background: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            margin: 10px 0; 
             width: 100%;
             max-width: 600px;
             box-sizing: border-box;
@@ -49,32 +53,47 @@
             font-size: 1.2em;
             color: #000;
         }
-        @media (max-width: 768px) {
-            .container1 {
-                padding: 15px;
-            }
-            .result1, .result2, .result3, .result4, .result5 {
-                font-size: 1em;
-            }
+        .result1 {
+            margin-top: 25px;
+            font-size: 1.2em;
+            color: #000000;
         }
-        @media (max-width: 480px) {
-            input, button {
-                font-size: 0.9em;
-            }
+        .result2 {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            color: #000000;
+        }
+        .result3 {
+            margin-top: 25px;
+            font-size: 1.2em;
+            color: #000000;
+        }
+        .result4 {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            color: #000000;
+        }
+        .result5 {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            color: #000000;
         }
     </style>
 </head>
 <body>
     <div class="container1">
-        <!--
         <h1>Money Double in (Year)</h1>
         <input type="number" id="principal" placeholder="Principal" step="0.01">
         <input type="number" id="interest" placeholder="Interest" step="0.01">
         <button onclick="calculate1()">Calculate</button>
         <div id="result1" class="result1"></div>
         <div id="result2" class="result2"></div>
-        -->
+    </div>
         
+    <div class="container1">
         <h1>Fixed Deposit Receipt (FDR)</h1>
         <input type="number" id="principal2" placeholder="Principal" step="0.01">
         <input type="number" id="interest2" placeholder="Interest" step="0.01">
@@ -82,7 +101,9 @@
         <button onclick="calculate2()">Calculate</button>
         <div id="result3" class="result3"></div>
         <div id="result4" class="result4"></div>
+    </div>
         
+    <div class="container1">
         <h1>Deposit Pension Scheme (DPS)</h1>
         <input type="number" id="MonthlyInstallment" placeholder="Monthly Installment Amount" step="0.01">
         <input type="number" id="interest3" placeholder="Interest" step="0.01">
