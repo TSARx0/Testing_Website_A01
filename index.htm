@@ -48,11 +48,7 @@
         button:hover {
             background-color: #0056b3;
         }
-        .result1, .result2, .result3, .result4, .result5 {
-            margin-top: 25px;
-            font-size: 1.2em;
-            color: #000;
-        }
+
         .result1 {
             margin-top: 25px;
             font-size: 1.2em;
@@ -76,6 +72,16 @@
             color: #000000;
         }
         .result5 {
+            margin-top: 25px;
+            font-size: 1.2em;
+            color: #000000;
+        }
+        .result6 {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #000000;
+        }
+        .result7 {
             margin-top: 10px;
             margin-bottom: 20px;
             font-size: 1.2em;
@@ -110,6 +116,8 @@
         <input type="number" id="time2" placeholder="Time (In month)" step="0.01">
         <button onclick="calculate3()">Calculate</button>
         <div id="result5" class="result5"></div>
+        <div id="result6" class="result6"></div>
+        <div id="result7" class="result7"></div>
     </div>
 
     <script>
@@ -159,7 +167,7 @@
             var perMonthMoney = ((principal - money) / 12);
 
             document.getElementById('result3').textContent = 'Maturity Amount: ' + principal.toFixed(2);
-            document.getElementById('result4').textContent = 'Additional money received (per month): ' + perMonthMoney.toFixed(2);
+            document.getElementById('result4').textContent = 'Additional Money Received (per month): ' + perMonthMoney.toFixed(2);
         }
 
         function calculate3() {
@@ -178,8 +186,13 @@
             }
 
             var total = l.reduce((acc, curr) => acc + curr, 0);
+            
+            var money = (MonthlyInstallment*time);
+            var AdditionalMoney = (total-money);
 
             document.getElementById('result5').textContent = 'Amount at Maturity: ' + total.toFixed(2);
+            document.getElementById('result6').textContent = 'Net Money Paid: ' + money.toFixed(2);
+            document.getElementById('result7').textContent = 'Additional money received: ' + AdditionalMoney.toFixed(2);
         }
     </script>
 </body>
