@@ -14,7 +14,7 @@
             background-color: #f4f4f4;
             margin: 0;
         }
-        .container {
+        .container1 {
             background: #fff;
             padding: 20px;
             border-radius: 8px;
@@ -46,6 +46,23 @@
         }
         .result2 {
             margin-top: 10px;
+            margin-bottom: 50px;
+            font-size: 1.2em;
+            color: #000000;
+        }
+        .result3 {
+            margin-top: 25px;
+            font-size: 1.2em;
+            color: #000000;
+        }
+        .result4 {
+            margin-top: 10px;
+            margin-bottom: 50px;
+            font-size: 1.2em;
+            color: #000000;
+        }
+        .result5 {
+            margin-top: 10px;
             margin-bottom: 20px;
             font-size: 1.2em;
             color: #000000;
@@ -53,17 +70,32 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container1">
         <h1>Money double in (Year)</h1>
         <input type="number" id="principal" placeholder="Principal" step="0.01">
         <input type="number" id="interest" placeholder="Interest" step="0.01">
-        <button onclick="calculate()">Calculate</button>
+        <button onclick="calculate1()">Calculate</button>
         <div id="result1" class="result1"></div>
         <div id="result2" class="result2"></div>
+        
+        <h1>Fixed Deposit Receipt (FDR)</h1>
+        <input type="number" id="principal2" placeholder="Principal" step="0.01">
+        <input type="number" id="interest2" placeholder="Interest" step="0.01">
+        <input type="number" id="time" placeholder="Time (In month)" step="0.01">
+        <button onclick="calculate2()">Calculate</button>
+        <div id="result3" class="result3"></div>
+        <div id="result4" class="result4"></div>
+        
+        <h1>Deposit Pension Scheme (DPS)</h1>
+        <input type="number" id="MonthlyInstallment" placeholder="Monthly Installment Amount" step="0.01">
+        <input type="number" id="interest3" placeholder="Interest" step="0.01">
+        <input type="number" id="time2" placeholder="Time (In month)" step="0.01">
+        <button onclick="calculate3()">Calculate</button>
+        <div id="result5" class="result5"></div>
     </div>
 
     <script>
-        function calculate() {
+        function calculate1() {
             // Get the values from the input fields
             var principal = parseFloat(document.getElementById('principal').value) || 0;
             var interest = parseFloat(document.getElementById('interest').value) || 0;
@@ -99,6 +131,59 @@
             document.getElementById('result1').textContent = '(for) Compound interest: ' + sum.toFixed(2) + 'year';
             document.getElementById('result2').textContent = '(for) Simple interest: ' + sum2.toFixed(2) + 'year';
             
+        }
+        
+        function calculate2() {
+            // Get the values from the input fields
+            var principal = parseFloat(document.getElementById('principal2').value) || 0;
+            var interest = parseFloat(document.getElementById('interest2').value) || 0;
+            var time = parseFloat(document.getElementById('time').value) || 0;
+
+            var money = principal
+            
+            interest = ((interest/100)/12);
+            
+            // Calculate the sum
+            var tempVar = 0;
+            while (tempVar < time) {
+                principal += (principal*interest);
+                
+                tempVar += 1;
+            }
+
+            var perMonthMoney = ((principal-money)/12);
+
+            // Display the result
+            document.getElementById('result3').textContent = 'Maturity Amount: ' + principal.toFixed(2);
+            document.getElementById('result4').textContent = 'Additional money receive (per month): ' + perMonthMoney.toFixed(2);
+        }
+        
+        function calculate3() {
+            // Get the values from the input fields
+            var MonthlyInstallment = parseFloat(document.getElementById('MonthlyInstallment').value) || 0;
+            var interest = parseFloat(document.getElementById('interest3').value) || 0;
+            var time = parseFloat(document.getElementById('time2').value) || 0;
+
+            interest = (interest / 100) / 12;
+
+            let l = [];
+
+            for (let i = 0; i < time; i++) {
+                l.push(MonthlyInstallment);
+    
+                for (let j = 0; j < l.length; j++) {
+                    l[j] += l[j] * interest;
+                }
+            }
+            
+            var total = 0;
+            
+            for (let j = 0; j < l.length; j++) {
+                    total += l[j];
+                }
+
+            // Display the result
+            document.getElementById('result5').textContent = 'Amount at Maturity: ' + total.toFixed(2);
         }
     </script>
 </body>
