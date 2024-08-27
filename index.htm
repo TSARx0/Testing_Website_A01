@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finance Calculator</title>
+    <title>Money Double Through Interest Calculator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,6 +13,7 @@
             height: 100vh;
             background-color: #f4f4f4;
             margin: 0;
+            padding: 10px; /* Padding to avoid content touching edges */
         }
         .container1 {
             background: #fff;
@@ -20,13 +21,17 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            width: 100%;
+            max-width: 600px; /* Limits the maximum width */
+            box-sizing: border-box; /* Ensures padding and border are included in width */
         }
         input {
             margin: 10px 0;
             padding: 10px;
-            width: calc(100% - 22px);
+            width: calc(100% - 22px); /* Adjusted width for padding */
             border: 1px solid #ccc;
             border-radius: 4px;
+            box-sizing: border-box; /* Ensures padding and border are included in width */
         }
         button {
             padding: 10px 20px;
@@ -39,39 +44,29 @@
         button:hover {
             background-color: #0056b3;
         }
-        .result1 {
+        .result1, .result2, .result3, .result4, .result5 {
             margin-top: 25px;
             font-size: 1.2em;
-            color: #000000;
+            color: #000;
         }
-        .result2 {
-            margin-top: 10px;
-            margin-bottom: 50px;
-            font-size: 1.2em;
-            color: #000000;
+        @media (max-width: 768px) {
+            .container1 {
+                padding: 15px;
+            }
+            .result1, .result2, .result3, .result4, .result5 {
+                font-size: 1em; /* Adjusted font size for smaller screens */
+            }
         }
-        .result3 {
-            margin-top: 25px;
-            font-size: 1.2em;
-            color: #000000;
-        }
-        .result4 {
-            margin-top: 10px;
-            margin-bottom: 50px;
-            font-size: 1.2em;
-            color: #000000;
-        }
-        .result5 {
-            margin-top: 10px;
-            margin-bottom: 20px;
-            font-size: 1.2em;
-            color: #000000;
+        @media (max-width: 480px) {
+            input, button {
+                font-size: 0.9em; /* Slightly smaller font size for very small screens */
+            }
         }
     </style>
 </head>
 <body>
     <div class="container1">
-        <h1>Money double in (Year)</h1>
+        <h1>Money Double in (Year)</h1>
         <input type="number" id="principal" placeholder="Principal" step="0.01">
         <input type="number" id="interest" placeholder="Interest" step="0.01">
         <button onclick="calculate1()">Calculate</button>
@@ -96,70 +91,55 @@
 
     <script>
         function calculate1() {
-            // Get the values from the input fields
             var principal = parseFloat(document.getElementById('principal').value) || 0;
             var interest = parseFloat(document.getElementById('interest').value) || 0;
 
-            
             var principal2 = principal;
             var money = principal;
-            // Calculate the sum
             var doublePrincipal = (principal * 2);
-            var sum = 0
+            var sum = 0;
             while (true) {
-                principal += (principal * (interest/100));
+                principal += (principal * (interest / 100));
                 sum += 1;
-                
                 if (doublePrincipal <= principal) {
                     break;
                 }
             }
-            
-            // Calculate the sum
+
             var sum2 = 0;
             while (true) {
-                principal2 += (money * (interest/100));
+                principal2 += (money * (interest / 100));
                 sum2 += 1;
-                
                 if (doublePrincipal <= principal2) {
                     break;
                 }
             }
 
-
-            // Display the result
-            document.getElementById('result1').textContent = '(for) Compound interest: ' + sum.toFixed(2) + 'year';
-            document.getElementById('result2').textContent = '(for) Simple interest: ' + sum2.toFixed(2) + 'year';
-            
+            document.getElementById('result1').textContent = '(for) Compound interest: ' + sum.toFixed(2) + ' year';
+            document.getElementById('result2').textContent = '(for) Simple interest: ' + sum2.toFixed(2) + ' year';
         }
-        
+
         function calculate2() {
-            // Get the values from the input fields
             var principal = parseFloat(document.getElementById('principal2').value) || 0;
             var interest = parseFloat(document.getElementById('interest2').value) || 0;
             var time = parseFloat(document.getElementById('time').value) || 0;
 
-            var money = principal
-            
-            interest = ((interest/100)/12);
-            
-            // Calculate the sum
+            var money = principal;
+            interest = ((interest / 100) / 12);
+
             var tempVar = 0;
             while (tempVar < time) {
-                principal += (principal*interest);
-                
+                principal += (principal * interest);
                 tempVar += 1;
             }
 
-            var perMonthMoney = ((principal-money)/12);
+            var perMonthMoney = ((principal - money) / 12);
 
-            // Display the result
             document.getElementById('result3').textContent = 'Maturity Amount: ' + principal.toFixed(2);
-            document.getElementById('result4').textContent = 'Additional money receive (per month): ' + perMonthMoney.toFixed(2);
+            document.getElementById('result4').textContent = 'Additional money received (per month): ' + perMonthMoney.toFixed(2);
         }
-        
+
         function calculate3() {
-            // Get the values from the input fields
             var MonthlyInstallment = parseFloat(document.getElementById('MonthlyInstallment').value) || 0;
             var interest = parseFloat(document.getElementById('interest3').value) || 0;
             var time = parseFloat(document.getElementById('time2').value) || 0;
@@ -167,22 +147,15 @@
             interest = (interest / 100) / 12;
 
             let l = [];
-
             for (let i = 0; i < time; i++) {
                 l.push(MonthlyInstallment);
-    
                 for (let j = 0; j < l.length; j++) {
                     l[j] += l[j] * interest;
                 }
             }
-            
-            var total = 0;
-            
-            for (let j = 0; j < l.length; j++) {
-                    total += l[j];
-                }
 
-            // Display the result
+            var total = l.reduce((acc, curr) => acc + curr, 0);
+
             document.getElementById('result5').textContent = 'Amount at Maturity: ' + total.toFixed(2);
         }
     </script>
